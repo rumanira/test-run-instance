@@ -1,6 +1,6 @@
 #!/bin/bash
-TAG_NAME="Name"
-INSTANCE_ID="`wget -qO- http://instance-data/latest/meta-data/instance-id`"
+TAG_NAME="TestGroup"
+INSTANCE_ID="`ec2metadata --instance-id`"
 TAG_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --output=text | cut -f5`"
 cd /home/ubuntu/test-scraper
-/usr/bin/python3 test.py ${TAG_VALUE} >> app.log
+/usr/bin/python3 test.py "${TAG_VALUE}" >> app.log
