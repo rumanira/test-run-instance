@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/ubuntu/test-scraper
+/usr/bin/python3 test.py productlist >> app.log
