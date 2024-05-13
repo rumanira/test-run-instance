@@ -3,4 +3,7 @@ TAG_NAME="TestGroup"
 INSTANCE_ID="`ec2metadata --instance-id`"
 TAG_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --output=text | cut -f5`"
 cd /home/ubuntu/test-scraper
-/usr/bin/python3 test.py "${TAG_VALUE}" >> app.log
+sudo -u ubuntu bash << EOF
+git pull
+/usr/bin/python3 test.py "${TAG_VALUE}" >> app_scraper.log
+EOF
