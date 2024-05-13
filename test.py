@@ -8,6 +8,7 @@ def print_argument():
         print(sys.argv[1])
         time.sleep(30)
         print("selesai")
+        print("horee")
 
 if __name__ == "__main__":
     print_argument()
