@@ -1,0 +1,11 @@
+[Unit]
+Description=Scraper
+After=multi-user.target
+
+[Service]
+Type=forking  # Adjust type based on your process (e.g., forking, oneshot)
+ExecStart=/home/ubuntu/test-scraper/start-script-x.sh  # Replace with your script path
+Restart=on-failure  # Adjust restart behavior as needed
+
+[Install]
+WantedBy=multi-user.target

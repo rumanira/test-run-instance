@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /home/ubuntu/test-scraper
+sudo -u ubuntu bash << EOF
+git pull
+EOF
+mkdir -p /etc/systemd/system
+cp /home/ubuntu/test-scraper/scraper.service /etc/systemd/system/scraper.service
+systemctl daemon-reload
+systemctl start scraper.service

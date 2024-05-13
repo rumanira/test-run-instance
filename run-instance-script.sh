@@ -1,5 +1,5 @@
 #!/bin/bash
-parameter_text="homepage,productlist"
+parameter_text="homepage"
 echo "Starting Instance Manager"
 IFS=","
 read -r -a parameters <<< "$parameter_text"
@@ -8,13 +8,13 @@ echo "Processing ${#parameters[@]} parameter(s)"
 instance_name="TestScraper-$(date +%Y-%m-%d_%H:%M:%S)"
 for parameter in "${parameters[@]}"; do
     echo "$parameter"
-    aws ec2 run-instances --image-id your_ec_ami_id \
+    aws ec2 run-instances --image-id - \
     --instance-type t2.micro \
-    --key-name your_key_pair_name \
+    --key-name - \
     --instance-market-options 'MarketType=spot,SpotOptions={MaxPrice=0.004}' \
-    --security-group-ids your_sg_id \
-    --iam-instance-profile "Name=your_iam_profile_name" \
-    --user-data file://start-script-x.txt \
+    --security-group-ids - \
+    --iam-instance-profile "Name=-" \
+    --user-data file://init-instance.txt \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${instance_name}},{Key=TestGroup,Value=${parameter}}]" \
-    --profile your_local_profile_name > /dev/null
+    --profile - > /dev/null
 done
