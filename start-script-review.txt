@@ -1,3 +1,0 @@
-#!/bin/bash
-cd /home/ubuntu/test-scraper
-/usr/bin/python3 test.py review >> app.log
