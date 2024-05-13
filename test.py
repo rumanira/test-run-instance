@@ -6,7 +6,7 @@ def print_argument():
         print("Please provide exactly one argument.")
     else:
         print(sys.argv[1])
-        time.wait(30)
+        time.sleep(30)
         print("selesai")
 
 if __name__ == "__main__":
